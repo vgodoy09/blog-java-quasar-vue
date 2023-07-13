@@ -1,0 +1,14 @@
+drop table IF EXISTS unidadeTemp;
+CREATE TEMPORARY TABLE unidadeTemp(descri character varying (255));
+
+INSERT INTO unidadeTemp(descri) values ('TECNICOR             ');
+INSERT INTO unidadeTemp(descri) values ('TECNICOR FIOS        ');
+INSERT INTO unidadeTemp(descri) values ('TECNICOR COMÉRCIO    ');
+
+
+
+INSERT INTO dbo.unit(active, name, company_id, registry_date) 
+select true active, TRIM(descri) description, 5 company_id, NOW() registry_date from unidadeTemp
+
+
+
