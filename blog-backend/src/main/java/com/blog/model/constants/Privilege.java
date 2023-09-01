@@ -2,6 +2,7 @@ package com.blog.model.constants;
 
 public class Privilege {
 	
+	 public static final int UNKNOWN = -1;
 	 public static final int BANNED = 0;
 	 public static final int REGULAR = 1;
 	 public static final int AUTHOR = 2;

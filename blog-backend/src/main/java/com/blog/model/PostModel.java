@@ -53,7 +53,7 @@ public class PostModel {
 	private String body;
 	
 	@Lob
-	@Column(name = "caption")
+	@Column(name = "caption", columnDefinition = "TEXT")
 	private String caption;
 	
 	@Column(name = "published")

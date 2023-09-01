@@ -236,6 +236,12 @@ public class PostResource {
 	public PostModel updatePostModel(@PathVariable(value = "slug") String slugParam, @RequestBody PostModel postModelDetails) {
 
 		PostModel postModel = postRepository.findBySlug(slugParam);
+		
+		postModelDetails.getListTags().forEach(t -> {
+			final String name = Optional.ofNullable(t).map(TagsModel::getName).orElse("");
+			String slug  = name.replaceAll("\\s", "-").toLowerCase();
+			t.setSlug(slug);
+		});
 
 		postModel.setAuthor_id(postModelDetails.getAuthor_id());
 		postModel.setBody(postModelDetails.getBody());

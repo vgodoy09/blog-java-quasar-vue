@@ -69,11 +69,7 @@ const actions = {
     axios.get('/admin/posts?page=' + page)
     .then((response) => {
       let res = response.data;
-      console.log('allposts', res)
       commit('SET_POSTS', res.content);
-
-      // eslint-disable-next-line
-      console.log("res.totalPages",res.totalPages)
 
       commit('SET_TOTAL_PAGES', res.totalPages);
     });
@@ -137,7 +133,7 @@ const actions = {
   },
 
   // =========================================================================
-
+// eslint-disable-next-line
   createPost({}, post) {
     // let tagsNames = post.tags.map((tag) => {
     //   return tag.name;
@@ -160,14 +156,9 @@ const actions = {
             file,
             blob: e.target.result
           };
-          // eslint-disable-next-line 
-          console.log('newAvatar dentro', this.newAvatar);
         };
         reader.readAsDataURL(file);
       }
-
-      // eslint-disable-next-line 
-      console.log('newAvatar', this.newAvatar);
 
     let tags = post.tags.map((tag) => {
       return { 
@@ -177,8 +168,6 @@ const actions = {
       };
     });
 
-    // eslint-disable-next-line 
-    console.log('tags', tags);
 
     let newPost = {
       title: post.title,
@@ -189,8 +178,6 @@ const actions = {
     }
 
 
-    // eslint-disable-next-line 
-    console.log('new post', newPost);
     return axios.post('/admin/posts', newPost, {
       '_method': 'POST'
       // headers: {
@@ -203,7 +190,7 @@ const actions = {
   },
 
   // =========================================================================
-
+// eslint-disable-next-line
   updatePost ({}, post) {
     // let tagsNames = post.tags.map((tag) => {
     //   return tag.name;
@@ -232,14 +219,10 @@ const actions = {
           file,
           blob: e.target.result
         };
-        // eslint-disable-next-line 
-        console.log('newAvatar dentro', this.newAvatar);
       };
       reader.readAsDataURL(file);
     }
 
-    // eslint-disable-next-line 
-    console.log('newAvatar', this.newAvatar);
 
     let tags = post.tags.map((tag) => {
       return { 
@@ -248,9 +231,6 @@ const actions = {
         slug: tag.name.replace(/\s+/g, '-')
       };
     });
-
-    // eslint-disable-next-line 
-    console.log('tags', tags);
 
 
     let updatePost = {

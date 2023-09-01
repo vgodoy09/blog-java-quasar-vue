@@ -34,6 +34,6 @@ export default {
     modal: function () {
       return this.$store.getters['modal/structure'];
     }
-  }
+  },
 }
 </script>

@@ -43,6 +43,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 				.formLogin().disable().httpBasic().disable().logout().disable()
 				.sessionManagement().enableSessionUrlRewriting(true).sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.authorizeRequests()
+				.antMatchers(HttpMethod.POST, SecurityConstants.REFRESH_URL).permitAll()
 				.antMatchers(HttpMethod.POST, SecurityConstants.SIGN_UP_URL).permitAll()
 				.antMatchers(HttpMethod.POST, SecurityConstants.REGISTER_URL).permitAll()
 				.antMatchers(HttpMethod.POST, SecurityConstants.LOGOUT_URL).permitAll()
@@ -86,7 +87,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-	    configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080"));
+	    configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080", "http://localhost:8081"));
 	    configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH"));
 	    configuration.setAllowCredentials(true);
 	    configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));

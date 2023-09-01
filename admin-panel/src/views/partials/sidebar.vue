@@ -100,6 +100,6 @@ export default {
     return {
       userSlug: JSON.parse(sessionStorage.getItem('@blog:user')).slug
     };
-  }
+  },
 }
 </script>

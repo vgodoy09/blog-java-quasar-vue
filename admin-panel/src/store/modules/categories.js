@@ -69,7 +69,6 @@ const actions = {
   getAllCategories ({commit}, page) {
     axios.get('/admin/categories?page=' + page).then((response) => {
       let res = response.data;
-      console.log('categories',res)
       commit('SET_CATEGORIES', res.content);
 
       // let totalPages = Math.ceil(res.total / res.per_page);

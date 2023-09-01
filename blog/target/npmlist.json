@@ -1,0 +1,1 @@
+{"version":"1.0.0","name":"Blog","dependencies":{"@websanova/vue-auth":{"version":"2.21.14-beta"},"axios":{"version":"0.18.0"},"vue-axios":{"version":"2.1.3"}}}

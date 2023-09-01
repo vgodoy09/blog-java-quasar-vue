@@ -147,42 +147,27 @@ export default {
     this.$store.dispatch('posts/getPost', this.$route.params.post)
     .then(() => {
       let post = this.$store.getters['posts/post'];
-      // eslint-disable-next-line
-      console.log('post update', post);
 
       this.postForm.slug = post.slug;
       this.postForm.title = post.title;
       this.postForm.tags = post.listTags;
-      let user = sessionStorage.getItem('@blog:user');
-      this.postForm.author_id = user;
+      this.postForm.author_id = post.author_id;
 
       this.postForm.category = post.category_id;
-      // eslint-disable-next-line
-      console.log('this.postForm initial', this.postForm);
       this.$store.commit(
         'categories/SET_CATEGORIES_SEARCH', [post.category_id]
       );
-
-      // eslint-disable-next-line
-      console.log('body', post.body);
 
       let body = post.body.replace(/posts\/images\/.*?\.png/g, (imagePath) => {
         return this.$baseURL + '/storage/' +  imagePath;
       });
 
-      // let body = post.body;
-
       // remove the div.body-wrapper 
       if (body.substr(0, 26) === '<div class="body-wrapper">') {
         body = body.substring(26, body.lastIndexOf('</div>'));
       }
-      // eslint-disable-next-line
-      console.log('body final', body);
-
       this.postForm.body = body;
 
-      // eslint-disable-next-line
-      console.log('this.postForm', this.postForm);
     })
     .catch(() => {
       this.$store.dispatch('message/update', {
@@ -261,6 +246,7 @@ export default {
       // from: <img src="http://127.0.0.1:8000/storage/posts/images/15465151870.png">
       // to:   <img src="posts/images/15465151870.png">
       let pattern = new RegExp(
+        // eslint-disable-next-line
         this.$baseURL.replace(/\//g, '\\/') + '\/storage\/posts\/images\/.*?\.png', 'g'
       );
       this.postForm.body = this.postForm.body.replace(pattern, (absolutePath) => {
@@ -275,8 +261,6 @@ export default {
     createPost(post) {
       this.$store.dispatch('posts/createPost', post)
       .then((postSlug) => {
-        // eslint-disable-next-line
-        console.log('response creat post', postSlug)
         // send successful message
         this.$store.dispatch('message/update', {
           title: post.title,
@@ -289,8 +273,6 @@ export default {
       })
       .catch((error) => {
         let response = error.response;
-        // eslint-disable-next-line
-        console.log('response create', error)
         // send error message
         this.$store.dispatch('message/update', {
           title: post.title,
@@ -306,8 +288,6 @@ export default {
     updatePost(post) {     
       this.$store.dispatch('posts/updatePost', post)
       .then((postSlug) => {
-        // eslint-disable-next-line
-        console.log('response update post', postSlug)
         // send successful message
         this.$store.dispatch('message/update', {
           title: post.title,
@@ -320,8 +300,6 @@ export default {
       })
       .catch((error) => {
         let response = error.response;
-        // eslint-disable-next-line
-        console.log('response update', error)
         // send error message
         this.$store.dispatch('message/update', {
           title: post.title,

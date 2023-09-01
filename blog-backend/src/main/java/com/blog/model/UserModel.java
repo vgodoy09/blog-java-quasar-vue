@@ -54,7 +54,7 @@ public class UserModel {
 	private String avatar;
 	
 	@Column(name = "privilege")
-	private Integer privilege;
+	private Integer privilege = Privilege.UNKNOWN;
 
 	@Column(name = "joined_it")
 	private LocalDateTime joined_it;

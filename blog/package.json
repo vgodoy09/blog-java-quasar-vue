@@ -1,10 +1,10 @@
 {
-  "name": "Q-Blog",
+  "name": "Blog",
   "version": "1.0.0",
-  "description": "the public site of the Q-Blog",
-  "productName": "Q-Blog",
+  "description": "the public site of the Blog",
+  "productName": "Blog",
   "cordovaId": "org.cordova.quasar.app",
-  "author": "abdelaziz321 <abdelazizmahmoud321@gmail.com>",
+  "author": "vgodoy09 <victorpradodegodoy09@gmail.com>",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue src",

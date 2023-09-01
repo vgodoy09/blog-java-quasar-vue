@@ -22,18 +22,18 @@
           v-for="message in messages"
           :key="message.id"
           class="d-flex"
-          :class="message.user.slug == $auth.user().slug ? '' : 'flex-row-reverse'"
+          :class="message.user != null && message.user.slug == $auth.user().slug ? '' : 'flex-row-reverse'"
         >
           <img
             alt="avatar"
-            :src="`${$baseURL}/storage/users/` +
+            :src="
               (
-                typeof message.user === 'undefined' || message.user.avatar === null ?
+                typeof message.user === 'undefined' ||  message.user === null || message.user.avatar === null ?
                 'https://cdn.quasar.dev/img/boy-avatar.png' : message.user.avatar
               )"
           />
           <div class="details">
-            <h6>{{ typeof message.user === 'undefined' ? 'someone' : message.user.name }}</h6>
+            <h6>{{ typeof message.user === 'undefined' || message.user ===  null || message.user === ''  ? 'someone' : message.user.username }}</h6>
             <p>{{ message.message }}</p>
           </div>
         </li>
@@ -79,6 +79,7 @@ export default {
   },
 
   watch: {
+    // eslint-disable-next-line
     newMessage: function (val) {
       this.$nextTick(() => {
         this.$refs.messages.scrollTop = this.$refs.messages.scrollHeight;

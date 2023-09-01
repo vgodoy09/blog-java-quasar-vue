@@ -99,8 +99,6 @@ const actions = {
   getUser({commit}, user) {
     axios.get('/admin/users/' + user)
     .then((response) => {
-      // eslint-disable-next-line
-    console.log('response user', response)
       commit('SET_USER', response.data)
     });
   },

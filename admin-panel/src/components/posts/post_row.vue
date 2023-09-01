@@ -70,8 +70,6 @@ export default {
 
   computed: {
     author: function () {
-      // eslint-disable-next-line
-      console.log('post ', this.post)
       if (typeof this.post.author_id === 'undefined' || this.post.author_id === null) {
         return 'unknown';
       }

@@ -76,10 +76,6 @@ export default {
   computed: {
     user: function () {
       let user = this.$store.getters['users/user'];
-      // eslint-disable-next-line
-      console.log('user getters', user)
-      // eslint-disable-next-line
-      console.log('this.$store', this.$store)
       return user;
     },
     posts: function () {
@@ -94,8 +90,6 @@ export default {
       //   return baseUrl + this.user.avatar;
       // }
       // return  baseUrl + 'avatar.svg';
-      // eslint-disable-next-line
-      console.log('user', this.user)
       return this.user.avatar == null || this.user.avatar == undefined || this.user.avatar == '' ? 'https://cdn.quasar.dev/img/boy-avatar.png' : this.user.avatar;
     }
   },
@@ -103,8 +97,6 @@ export default {
 
   watch: {
     page: function (val) {
-      // eslint-disable-next-line
-      console.log('userposts', this.$route.params.user)
       this.$store.dispatch('posts/getUserPosts', {
         page: val,
         user: this.$route.params.user
@@ -114,8 +106,6 @@ export default {
 
 
   created: function () {
-    // eslint-disable-next-line
-    console.log('getuser', this.$route.params.user)
     this.page = helpers.getPageQuery();
     this.$store.dispatch('users/getUser', this.$route.params.user);
   },
@@ -123,8 +113,6 @@ export default {
 
   methods: {
     setPage(page) {
-      // eslint-disable-next-line
-      console.log('setpage', page)
       this.page = page;
       this.$router.push('/users/' + this.$route.params.user + '/posts?page=' + page);
     }

@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.blog.config.SecurityConstants;
 import com.blog.exception.ResourceException;
 import com.blog.model.PostModel;
 import com.blog.model.UserModel;
@@ -96,8 +98,41 @@ public class UserResource {
 	})
 	@GetMapping("/auth/user")
 	public UserModel getUserModel(HttpServletRequest request) {
-		String test = request.getRequestURI();
-		System.out.println(test);
+		String header = request.getHeader(SecurityConstants.HEADER_STRING);
+		 
+		if(StringUtils.isNotBlank(header)) {
+//			String user =
+//					 JWT.require(Algorithm.HMAC512(SecurityConstants.SECRET.getBytes())).build()
+//					 .verify(header.replace(SecurityConstants.TOKEN_PREFIX, "")).getSubject();
+//			System.out.println(user);
+			String token = header.replace(SecurityConstants.TOKEN_PREFIX, "");
+			ResponseUser loggerToken = userService.loggerToken(token);
+			UserModel userModel = Optional.ofNullable(loggerToken).map(ResponseUser::getUser).orElse(new UserModel());
+			return userModel;
+		}
+		return new UserModel();
+	}
+	
+	
+	@ApiOperation(value = "Método que atualiza o token.", response = UserModel[].class, notes = "Atualiza o token.")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Atualiza o token", response = UserModel[].class),
+			@ApiResponse(code = 400, message = "não atualiza o token", response = ResourceException.class)
+
+	})
+	@PostMapping("/auth/refresh")
+	public UserModel refresh(HttpServletRequest request) {
+		String header = request.getHeader(SecurityConstants.HEADER_STRING);
+		 
+		if(StringUtils.isNotBlank(header)) {
+//			String user =
+//					 JWT.require(Algorithm.HMAC512(SecurityConstants.SECRET.getBytes())).build()
+//					 .verify(header.replace(SecurityConstants.TOKEN_PREFIX, "")).getSubject();
+//			System.out.println(user);
+			String token = header.replace(SecurityConstants.TOKEN_PREFIX, "");
+			ResponseUser loggerToken = userService.loggerToken(token);
+			UserModel userModel = Optional.ofNullable(loggerToken).map(ResponseUser::getUser).orElse(new UserModel());
+			return userModel;
+		}
 		return new UserModel();
 	}
 	
@@ -211,10 +246,10 @@ public class UserResource {
 		return userService.loginIn(userDTO);
 	}
 	
-	@PostMapping("auth/refresh")
-	public ResponseUser refresh(@RequestBody UserDTO userDTO) {
-		return userService.loginIn(userDTO);
-	}
+//	@PostMapping("auth/refresh")
+//	public ResponseUser refresh(@RequestBody UserDTO userDTO) {
+//		return userService.loginIn(userDTO);
+//	}
 	
 	@PostMapping("auth/logout")
 	public ReturnLogoutDTO logout() {

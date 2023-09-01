@@ -24,7 +24,7 @@ body.fixed-nav {
   padding-top: $navbar-base-height;
 }
 
-.loading {
+.loading_normal {
   position: fixed;
   display: flex;
   width: 100vw;
@@ -34,7 +34,27 @@ body.fixed-nav {
   justify-content: center;
   align-items: center;
   font-size: 2em;
-  background: linear-gradient(110deg, #266aa2 0%, #266aa2 18%, #2d71a8 20%, #266aa2 20%, #266aa2 75%, #2d71a8 80%, #266aa2 80%, #2d71a8 100%);
+  background: linear-gradient(145deg, $gray-801 15%, $gray-802 70%);
+  // background: linear-gradient(110deg, #266aa2 0%, #266aa2 18%, #2d71a8 20%, #266aa2 20%, #266aa2 75%, #2d71a8 80%, #266aa2 80%, #2d71a8 100%);
+  color: $gray-100;
+
+  svg {
+    color: $yellow;
+  }
+}
+
+.loading_dark {
+  position: fixed;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  background: linear-gradient(145deg, $gray-803 15%, $gray-804 70%);
+  // background: linear-gradient(110deg, #266aa2 0%, #266aa2 18%, #2d71a8 20%, #266aa2 20%, #266aa2 75%, #2d71a8 80%, #266aa2 80%, #2d71a8 100%);
   color: $gray-100;
 
   svg {

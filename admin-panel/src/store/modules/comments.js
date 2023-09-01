@@ -53,7 +53,6 @@ const actions = {
   getPostComments({commit}, {post, userLogado}) {
     axios.get('/admin/posts/' + post + '/user/'+userLogado+'/comments')
     .then((response) => {
-      console.log('commetspost', response)
       commit('SET_COMMENTS', response.data);
      });
   },

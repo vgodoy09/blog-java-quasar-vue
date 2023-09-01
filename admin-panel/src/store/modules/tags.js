@@ -91,8 +91,6 @@ const actions = {
       name: tag.name
     })
     .then((response) => {
-      // eslint-disable-next-line
-      console.log('updateTag', response)
       commit('UPDATE_TAG', response.data);
       return response;
     });

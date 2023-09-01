@@ -3,8 +3,8 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <router-link class="navbar-brand text-center" to="/">
-        <font-awesome-icon icon="book" />
-        Q-Blog
+        <font-awesome-icon icon="gear" />
+        Blog
         <span>Admin Panel</span>
       </router-link>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,13 +69,12 @@ export default {
 
 
   created: function () {
-    // eslint-disable-next-line
-    console.log('teste 4')
+    // this.$auth.user({
+    //         role:"default"
+    //       });
     // let user = sessionStorage.getItem('@blog:user')
     // window.$user = user;
     window.$user = this.$auth.user();
-    // eslint-disable-next-line
-    console.log('teste 5', window.$user);
     this.$gate.setUser(window.$user);
   }
 }

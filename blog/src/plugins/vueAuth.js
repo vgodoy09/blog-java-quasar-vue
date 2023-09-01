@@ -13,7 +13,7 @@ export default ({ app, router, Vue }) => {
     router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js'),
 
     tokenDefaultName: 'access_token',
-    tokenStore: ['localStorage'],
+    tokenStore: ['cookie'],
     authRedirect: { path: '/login' },
     notFoundRedirect: { path: '/404' },
     rolesVar: 'role',
@@ -21,7 +21,7 @@ export default ({ app, router, Vue }) => {
       enabled: false, interval: 0
     },
     parseUserData: function (data) {
-      return data.user;
+      return data;
     }
   });
 }

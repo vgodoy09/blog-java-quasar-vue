@@ -20,12 +20,16 @@ import {
   faPaperPlane,
   faGlobe,
   faTimes,
-  faLock
+  faLock,
+  faStar,
+  faSun,
+  faMoon,
+  faGear
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
   faUser,
-  faClone,
+  faClone
 } from '@fortawesome/free-regular-svg-icons';
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -58,6 +62,11 @@ library.add(faEye);
 
 // login
 library.add(faLock);
+library.add(faStar);
+library.add(faSun);
+library.add(faMoon);
+library.add(faGear);
+
 
 // chat
 library.add(faPaperPlane);

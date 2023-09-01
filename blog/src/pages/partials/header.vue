@@ -7,8 +7,8 @@
       <!-- logo - title -->
       <img src="statics/logo.png" height="30px"/>
       <q-toolbar-title>
-        <router-link class="text-white" to="/posts">Q-Blog</router-link>
-        <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
+        <router-link class="text-white" to="/posts">Blog</router-link>
+        <div slot="subtitle">Tecnologia</div>
       </q-toolbar-title>
 
       <!-- nav links -->

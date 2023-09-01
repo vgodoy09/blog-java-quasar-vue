@@ -44,6 +44,7 @@
 
 <script>
 export default {
+
   computed: {
     message: function () {
       return this.$store.getters['message/structure'];
